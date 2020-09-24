@@ -83,9 +83,7 @@ router.post('/new', async (req, res) => {
             if (newOrderId > 0) {
                 products.forEach(async (p) => {
 
-                        let data = await database.table('products').filter({id: p.id}).withFields(['quantity']).get();
-
-
+                    let data = await database.table('products').filter({id: p.id}).withFields(['quantity']).get();
 
                     let inCart = parseInt(p.incart);
 

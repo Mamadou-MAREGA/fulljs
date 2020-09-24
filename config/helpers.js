@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 let conn = new Mysqli({
-    Host: 'localhost', // IP/domain name 
+    host: 'localhost', // IP/domain name
     post: 3306, // port, default 3306 
     user: 'root', // username
-    passwd: '', // password
+    pass: '', // password
     db: 'mega_shop'
 });
 
