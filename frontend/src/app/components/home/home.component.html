@@ -82,7 +82,7 @@
                  </div>
                </div>
                <div class="card-body">
-                 <h6>{{ product.description.substr(0,25) }} ...</h6>
+                 <h6>{{ product.description.substr(0,40) }} ...</h6>
                  <p class="lead">{{product.price | currency: 'EUR'}}</p>
                </div>
                <div class="row">
@@ -90,6 +90,7 @@
                    <button class="btn btn-outline-primary btn-sm btn-block"
                     [class.disabled]="product.quantity < 1"
                     [class.btn-outline-danger]="product.quantity < 1"
+                           (click)="addToCart(product.id)"
                    >
                      {{ product.quantity < 1 ? "Pas de stock" : "Add To Cart" }}
 
