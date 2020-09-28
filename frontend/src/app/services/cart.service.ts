@@ -146,10 +146,6 @@ export class CartService {
               incart: 1,
               id: prod.id
             });
-            this.calculateTotal();
-            this.cartDataClient.total = this.cartDataServer.total;
-            localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
-            this.cartData$.next({... this.cartDataServer});
 
             this.toast.success(`${prod.name} added to the cart`, 'Product added', {
               timeOut: 1500,
@@ -157,13 +153,13 @@ export class CartService {
               progressAnimation: "increasing",
               positionClass: 'toast-top-right'
             });
-
             // calcul du montant total
             this.calculateTotal();
             this.cartDataClient.total = this.cartDataServer.total;
             localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
             this.cartData$.next({... this.cartDataServer});
           }
+
       }
     });
 
@@ -178,8 +174,8 @@ export class CartService {
       // calcul du montant total
       this.calculateTotal();
       this.cartDataClient.total = this.cartDataServer.total;
-      localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
       this.cartData$.next({... this.cartDataServer});
+      localStorage.setItem('cart', JSON.stringify(this.cartDataClient));
     } else {
       data.numIncart --;
 
@@ -226,7 +222,7 @@ export class CartService {
         this.cartData$.next({...this.cartDataServer});
       }
     }
-    // If the user doesn't want to delete the product, hits the CANCEL button
+    //If the user doesn't want to delete the product, hits the CANCEL button
     else {
       return;
     }
