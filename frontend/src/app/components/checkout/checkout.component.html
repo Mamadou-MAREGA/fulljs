@@ -169,7 +169,9 @@
             I've read and accept the <a href="#">terms & conditions</a>
           </label>
         </div>
-        <button type="submit" class="btn-outline-danger btn-sm my-2 btn-block order-submit" (click)="onCheckout()">Place order</button>
+        <button type="submit" class="btn-outline-danger btn-sm my-2 btn-block order-submit" [disabled]="cartTotal <= 0"  (click)="onCheckout()">
+          Place order
+        </button>
       </div>
       <!-- /Order Details -->
     </div>
