@@ -14,7 +14,14 @@ import { CartComponent } from './components/cart/cart.component';
 import { HttpClientModule} from "@angular/common/http";
 import {NgxSpinnerModule} from "ngx-spinner";
 import {ToastrModule} from "ngx-toastr";
+import { LoginComponent } from './components/login/login.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import {SocialLoginModule, SocialAuthServiceConfig,GoogleLoginProvider} from "angularx-social-login";
+import {FormsModule} from "@angular/forms";
 
+
+
+// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +31,9 @@ import {ToastrModule} from "ngx-toastr";
     HomeComponent,
     ProductComponent,
     ThankyouComponent,
-    CartComponent
+    CartComponent,
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +41,27 @@ import {ToastrModule} from "ngx-toastr";
     AppRoutingModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    FormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  // @ts-ignore
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              'AIzaSyAPy6-g3LCdXO-PcL5n8gwK4uuw5W0VOpk'
+            ),
+          }
+        ]
+      }
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

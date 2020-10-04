@@ -11,7 +11,7 @@
       </ul>
       <ul class="header-links pull-right">
         <li><a href="#"><i class="fa fa-euro"></i> EUR</a></li>
-        <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
+        <li><a routerLink="/profile"><i class="fa fa-user-o"></i>{{authState === false ? 'lOGIN' : 'My account'}}</a></li>
       </ul>
     </div>
   </div>
